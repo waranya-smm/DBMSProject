@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Administrator</title>
+    <script src="lib/jquery.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=K2D&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+    <h1 id="welcome">Welcome..</h1></nav>
+    <section id="contain">
+        <div id="admin">
+            <form id="adminSubmit" onsubmit="return handle_form_submission()">
+                    Admin: <input id="adminName" type="text" placeholder="ใส่ชื่อผู้ดูแล" required>
+                <button type='submit'>submit</button>
+            </form>
+        </div>
+
+
+        <div id="option">
+            <div id="addDiv">
+            <p>เพิ่มข้อมูลเกษตรกร: <button id="addInf" type='submit'><a href="form.html">ADD</a></button><br>
+            </div>
+            </p>
+            
+            <p>ค้นหาข้อมูล:
+            <select id="selectInf">
+                <option value="farmerInf">เกษตรกร</option>
+                <option value="filter">อื่นๆ</option>
+            </select></p>
+            <button onclick="handle_search_submission()" id="srchInf" type='submit'>SUBMIT</button>
+            <div id="idFarmer_search">
+
+                <p>หมายเลขประจำตัวประชาชน: <input id="farmer_SSN" type="text" placeholder="1340002225556" required><br>
+                </p><p>ชื่อ-นามสกุล <input id="farmer_Name" placeholder="Name Lastname" type="text"
+                    required><br></p>
+                <p style="font-size: 14px;">สามารถเลือกกรอกข้อมูลใดข้อมูลหนึ่ง*</p>
+                <button id="srchSSN">SEARCH</button>
+                <p id="alertERR">..</p>
+
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            $('#option').hide();
+
+        });
+        function handle_form_submission() {
+            var adminSubmit = document.getElementById("adminSubmit");
+            var welcome = document.getElementById("welcome");
+            var adminName = document.getElementById("adminName").value;
+            $(document).ready(function () {
+                $('#adminSubmit').hide();
+                $('#option').show();
+
+            });
+
+            welcome.textContent = "Welcome, " + adminName;
+            return false; //do not submit the form
+        }
+
+        $(document).ready(function () {
+            $('#idFarmer_search').hide();
+        });
+        function handle_search_submission() {
+
+            var selectInf = document.getElementById("selectInf");
+            if (selectInf.value === "farmerInf") {
+                console.log("value = farmer")
+                $(document).ready(function () {
+                    $('#idFarmer_search').show();
+
+                });
+
+            } else {
+                console.log("value = other")
+                window.location.href = 'filterSearch.html';
+
+            }
+        }
+
+        document.getElementById("srchSSN").addEventListener("click", function () {
+            console.log("SSN")
+            var farmer_SSN = document.getElementById("farmer_SSN").value;
+            var farmer_Name = document.getElementById("farmer_Name").value;
+            var alertERR = document.getElementById("alertERR");
+            console.log(farmer_Name)
+            console.log(farmer_SSN)
+            console.log(farmer_SSN.length)
+
+            if (farmer_SSN == "" && farmer_Name == "") {
+                alertERR.textContent = "Enter some of value"
+            }
+
+            if (farmer_Name == "" && farmer_SSN.length !== 13) {
+
+                alertERR.textContent = "please enter 13 digit"
+            } else if (farmer_Name == "" && farmer_SSN.length === 13) {
+                //to get value of farmer
+                alertERR.textContent = "Get table from SSN"
+            }
+            else if (farmer_SSN == "" && farmer_SSN == "") {
+                alertERR.textContent = "Get table from Name"
+            }
+
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="lib/jquery.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=K2D&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h2>Text Input</h2>
+
+    <form class="farmer">
+        <!--(all string) SSN,firstname, lastname, age, phonenumber, address, hosehold_member, labor_farmerNum, Village_role, Land_id-->
+        <h3>ส่วนที่ 1 Farmer</h3>
+        <br\>
+
+            First name:
+            <input type="text" id="firstname" />
+            
+            Last name:
+            <input type="text" id="lastname" />
+
+            <br />
+            SSN:<br />
+            <input type="text" id="SSN" />
+
+            <br />
+            Age:<br />
+            <input type="text" id="age" />
+
+            <br />
+            Phone Number:<br />
+            <input type="text" id="phonenumber" />
+
+            <br />
+            Address:<br />
+            <input type="text" id="address" />
+
+            <br />
+            House hold Member:<br />
+            <input type="text" id="hosehold_member" />
+
+            <br />
+            Labor farmerNum:<br />
+            <input type="text" id="labor_farmerNum" />
+
+            <br />
+            Village role:<br />
+            <input type="text" id="Village_role" />
+
+            <br />
+            Land ID:<br />
+            <input type="text" id="Land_id" />
+
+    </form>
+
+    <form class="land_information">
+        <!--(all string) agriLand_amount, agriLand_size, agriLandYY_amount, agriLandYY_size, sufficiency_level-->
+        <br\>
+            <h3>ส่วนที่ 2 Land information</h3>
+            <br\>
+
+
+                มีพื้นที่ทั้งหมดกี่แปลง: <br />
+                <input type="text" id="agriLand_amount" />
+
+                <br />
+                มีพื้นที่รวมทั้งหมด (ขนาด):<br />
+                <input type="text" id="agriLand_size" />
+
+                <br />
+                จน. ที่ทำแปลงเกษตรยั่งยืน :<br />
+                <input type="text" id="agriLandYY_amount" />
+
+                <br />
+                ขนาด พท. เกษตรยั่งยืน:<br />
+                <input type="text" id="agriLandYY_size" />
+
+                <br />
+                ระดับความพอเพียง:<br />
+                <input type="text" id="sufficiency_level" />
+
+    </form>
+
+    <form class="land_detail">
+        <!--(all string) field_size, licence, geo_coor(x,y), type_ofArea, agri_activity(2 input), agri_standards, chem_inArea(multi)-->
+        <br\>
+            <h3>ส่วนที่ 3 Land detail</h3>
+            <br\>
+
+
+                กิจกรรมการผลิต: <br />
+                <input type="text" id="agri_activity" />
+
+                <br />
+                ขนาดแปลง:<br />
+                <input type="text" id="field_size" />
+
+                <br />
+                เอกสารสิทธิ์ :<br />
+                <input type="text" id="licence" />
+
+                <br />
+                พิกัด (x,y):<br />
+                <input type="text" id="geo_coor" />
+
+                <br />
+                รูปแบบการทำเกษตรยั่งยืน:<br />
+                <input type="text" id="type_ofArea" />
+
+                <br />
+                มาตรฐาน:<br />
+                <input type="text" id="agri_standards" />
+
+                <br />
+                สารเคมีที่ใช้:<br />
+                <input type="text" id="chem_inArea" multiple>
+
+    </form>
+
+    <form class="income">
+            <!--(all string) product, income_perY, volume, sell_locate-->
+            <br\>
+                <h3>ส่วนที่ 4 Income</h3>
+                <br\>
+    
+                    สินค้า: <br />
+                    <input type="text" id="product" />
+    
+                    <br />
+                    รายได้ต่อปี:<br />
+                    <input type="text" id="income_perY" />
+    
+                    <br />
+                    จำนวน :<br />
+                    <input type="text" id="volume" />
+    
+                    <br />
+                    สถานที่ขาย:<br />
+                    <input type="text" id="sell_locate" />
+    
+        </form>
+    
+
+    <button id="submit_button" type='button'>SUBMIT</button>
+</body>
+
+<script>
+    //script for show input
+
+    var butt = document.getElementById("submit_button");
+    butt.addEventListener("click", showData);
+
+    function showData() {
+        //(all string) SSN,firstname, lastname, age, phonenumber, address, hosehold_member, labor_farmerNum, Village_role, Land_id
+        var SSN = document.getElementById("SSN").value;
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var age = document.getElementById("age").value;
+        var phonenumber = document.getElementById("phonenumber").value;
+        var address = document.getElementById("address").value;
+        var hosehold_member = document.getElementById("hosehold_member").value;
+        var labor_farmerNum = document.getElementById("labor_farmerNum").value;
+        var Village_role = document.getElementById("Village_role").value;
+        var Land_id = document.getElementById("Land_id").value;
+        //(all string) agriLand_amount, agriLand_size, agriLandYY_amount, agriLandYY_size, sufficiency_level
+        var agriLand_amount = document.getElementById("agriLand_amount").value;
+        var agriLand_size = document.getElementById("agriLand_size").value;
+        var agriLandYY_amount = document.getElementById("agriLandYY_amount").value;
+        var agriLandYY_size = document.getElementById("agriLandYY_size").value;
+        var sufficiency_level = document.getElementById("sufficiency_level").value;
+        //(all string) field_size, licence, geo_coor(x,y), type_ofArea, agri_activity(2 input), agri_standards, chem_inArea(multi)
+        var field_size = document.getElementById("field_size").value;
+        var licence = document.getElementById("licence").value;
+        var geo_coor = document.getElementById("geo_coor").value;
+        var type_ofArea = document.getElementById("type_ofArea").value;
+        var Sagri_activitySN = document.getElementById("agri_activity").value;
+        var agri_standards = document.getElementById("agri_standards").value;
+        var chem_inArea = document.getElementById("chem_inArea").value;
+        //(all string) product, income_perY, volume, sell_locate
+        var product = document.getElementById("product").value;
+        var income_perY = document.getElementById("income_perY").value;
+        var volume = document.getElementById("volume").value;
+        var sell_locate = document.getElementById("sell_locate").value;
+
+        function getvalue(element){
+            var value;
+            return result = element.value;
+        }
+
+        //(all string) SSN,firstname, lastname, age, phonenumber, address, hosehold_member, labor_farmerNum, Village_role, Land_id
+        var name = firstname + " " + lastname;
+        console.log(name)
+        console.log(SSN)
+        console.log(age)
+        console.log(phonenumber)
+        console.log(address)
+        console.log(hosehold_member)
+        console.log(labor_farmerNum)
+        console.log(Village_role)
+        console.log(Land_id)
+
+        list = [];
+        sublist = [];
+        
+        
+    }
+</script>
+
+</html>
