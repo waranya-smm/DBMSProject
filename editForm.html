@@ -8,16 +8,17 @@
 </head>
 
 <body>
-    <h2>Text Input</h2>
+    <h2>แก้ไขข้อมูล</h2>
     <div id="farmer">
         <form class="farmer">
             <!--(all string) SSN,firstname, lastname, age, phonenumber, Agri_num, sufficiency_level, family_amount, Agri_member-->
             <h3>ข้อมูลพื้นฐาน</h3>
             <br\>
 
-                ชื่อสกุล:
+                ชื่อ-สกุล:
                 <input type="text" id="firstname" />
-                
+
+
                 หมายเลขประจำตัวประชาชน:
                 <input type="text" id="SSN" />
 
@@ -48,7 +49,7 @@
                     <option value="4">ไม่มีความพอเพียงจำเป็นต้องซื้ออาหารเพิ่ม ส่วนใหญ่</option>
 
                 </select>
-                
+
                 <br />
                 จำนวนแรงงานหลักในการเกษตร:
                 <input type="text" id="family_amount" />
@@ -60,15 +61,13 @@
         </form>
     </div>
 
-   
 
-    <form class="land_info">
-        <!--(all string) Land_no, Area_No, All_amount_land, All_amount_area, Substainable_land, Substainable_area, Start_date-->
-        <br\>
-            <h3> ข้อมูลพื้นที่ </h3>
+    <div id="landInfo">
+        <form class="land_info">
+            <!--(all string) Land_no, Area_No, All_amount_land, All_amount_area, Substainable_land, Substainable_area, Start_date-->
             <br\>
+                <h3> ข้อมูลพื้นที่ </h3>
 
-                <br />
                 พื้นที่ทำการเกษตรทั้งหมด:
                 <input type="text" id="All_amount_land" />
 
@@ -81,120 +80,123 @@
                 <input type="text" id="Substainable_land" />
 
                 พื้นที่รวมแปลงเกษตรยั่งยืน:
-                <input type="text" id="Substainable_area" />
+                <input type="text" id="Substainable_area" /><br/>
                 ปีที่เริ่มทำ:
                 <input type="text" id="Start_date">
-    </form>
-    <br />
-    <button id="submit_button" type='button'>SUBMIT</button>
-
-    <form class="AREA">
-        <!--(all string) Land_no, Area_No, coordinates, Area_size, Agri_type, Agri_standard-->
-        <h3>จำนวนพื้นที่ รูปแบบการทำเกษตรยั่งยืน</h3>
-        <p>สามารถเพิ่มข้อมูลได้มากกว่าหนึ่งคร้ัง**</p>
-
-        แปลงที่:
-        <input type="text" id="Land_no" />
-
-
-        เอกสารสิทธิ์:
-        <input type="text" id="Area_No" />
-
-        <br />
-        พิกัดที่ดิน (x,y):<br />
-        ละติจูด:<input type="text" id="lat"> ลองจิจูด:<input type="text" id="lng">
-
-        <br />
-        จำนวนพื้นที่:
-        <input type="text" id="Area_size">
-
-        <br />
-        รูปแบบการทำเกษตรยั่งยืน:<br />
-        <form class="Agri_type">
-            <input type="radio" name="Agri_type" value="Integrated Agriculture" checked> เกษตรผสมผสาน<br>
-            <input type="radio" name="Agri_type" value="New Theory Agriculture"> เกษตรทฤษฏีใหม่<br>
-            <input type="radio" name="Agri_type" value="Agroforestry"> วนเกษตร<br><br>
         </form>
 
+        <br><br>
+        <button id="submit_button" type='button'>SUBMIT</button>
+    </div>
 
-        มาตรฐานการเกษตร:<br />
-        <form class="Agri_standard">
-            <input type="radio" name="Agri_standard" value="Organic" checked> เกษตรอินทรีย์<br>
-            <input type="radio" name="Agri_standard" value="Gap"> GAP<br>
-            <input type="radio" name="Agri_standard" value=""> ไม่ไดข้อรับรอง<br><br>
-            <!--null-->
+    <div id="area">
+        <form class="AREA">
+            <!--(all string) Land_no, Area_No, coordinates, Area_size, Agri_type, Agri_standard-->
+            <h3>จำนวนพื้นที่ รูปแบบการทำเกษตรยั่งยืน</h3>
+            <p>สามารถเพิ่มข้อมูลได้มากกว่าหนึ่งคร้ัง**</p>
+
+            แปลงที่:
+            <input type="text" id="Land_no" />
+
+
+            เอกสารสิทธิ์:
+            <input type="text" id="Area_No" />
+
+            <br />
+            พิกัดที่ดิน (x,y):<br />
+            ละติจูด:<input type="text" id="lat"> ลองจิจูด:<input type="text" id="lng">
+
+            <br />
+            จำนวนพื้นที่:
+            <input type="text" id="Area_size">
+
+            <br />
+            รูปแบบการทำเกษตรยั่งยืน:<br />
+            <form class="Agri_type">
+                <input type="radio" name="Agri_type" value="Integrated Agriculture" checked> เกษตรผสมผสาน<br>
+                <input type="radio" name="Agri_type" value="New Theory Agriculture"> เกษตรทฤษฏีใหม่<br>
+                <input type="radio" name="Agri_type" value="Agroforestry"> วนเกษตร<br><br>
+            </form>
+
+
+            มาตรฐานการเกษตร:<br />
+            <form class="Agri_standard">
+                <input type="radio" name="Agri_standard" value="Organic" checked> เกษตรอินทรีย์<br>
+                <input type="radio" name="Agri_standard" value="Gap"> GAP<br>
+                <input type="radio" name="Agri_standard" value=""> ไม่ไดข้อรับรอง<br><br>
+                <!--null-->
+            </form>
+
+            <button id="add1" type='button'>ADD</button>
         </form>
 
-        <button id="add1" type='button'>ADD</button>
-    </form>
+        <form class="AREA_PRODUCT">
+            <!--(all string) Land_no, Area_No, product, priority-->
+            <h3>กิจกรรมการผลิต</h3>
 
-    <form class="AREA_PRODUCT">
-        <!--(all string) Land_no, Area_No, product, priority-->
-        <h3>กิจกรรมการผลิต</h3>
-        
-        แปลงที่:
-        <input type="text" id="Land_no" />
+            แปลงที่:
+            <input type="text" id="Land_no" />
 
-        <br />
-        กิจกรรมการผลิต:<br />
-        <input type="text" id="product">
+            <br />
+            กิจกรรมการผลิต:<br />
+            <input type="text" id="product">
 
-        <br />
-        หลักและรอง (1=หลัก, 2=รอง):<br />
-        <input type="text" id="priority">
-        <br>
-        <button id="add2" type='button'>ADD</button>
+            <br />
+            หลักและรอง (1=หลัก, 2=รอง):<br />
+            <input type="text" id="priority">
+            <br>
+            <button id="add2" type='button'>ADD</button>
 
-    </form>
+        </form>
 
-    <form class="AREA_CHEM">
-        <!--(all string) Land_no, Area_no, Chemical_use-->
-        <br\>
-            <h3>การใช้สารเคมี</h3>
+        <form class="AREA_CHEM">
+            <!--(all string) Land_no, Area_no, Chemical_use-->
             <br\>
+                <h3>การใช้สารเคมี</h3>
+                <br\>
 
-                แปลงที่:
-                <input type="text" id="Land_no" />
+                    แปลงที่:
+                    <input type="text" id="Land_no" />
 
 
-                <br />
-                สารเคมีที่ใช้:<br />
-                <form class="Chemical_use">
-                    <input type="checkbox" name="Chemical_use" value="Chemical fertilizer" checked> Chemical
-                    fertilizer<br>
-                    <input type="checkbox" name="Chemical_use" value="Herbicides"> Herbicides<br>
-                    <input type="checkbox" name="Chemical_use" value="Pesticide"> Pesticide<br>
-                    <input type="checkbox" name="Chemical_use" value="Synthetic hormones"> Synthetic
-                    hormones<br>
-                    <input type="checkbox" name="Chemical_use" value=""> ไม่ใช้<br>
-                    <!--null-->
-                </form>
+                    <br />
+                    สารเคมีที่ใช้:<br />
+                    <form class="Chemical_use">
+                        <input type="checkbox" name="Chemical_use" value="Chemical fertilizer" checked> Chemical
+                        fertilizer<br>
+                        <input type="checkbox" name="Chemical_use" value="Herbicides"> Herbicides<br>
+                        <input type="checkbox" name="Chemical_use" value="Pesticide"> Pesticide<br>
+                        <input type="checkbox" name="Chemical_use" value="Synthetic hormones"> Synthetic
+                        hormones<br>
+                        <input type="checkbox" name="Chemical_use" value=""> ไม่ใช้<br>
+                        <!--null-->
+                    </form>
 
-                <button id="add3" type='button'>ADD</button>
+                    <button id="add3" type='button'>ADD</button>
 
-    </form>
+        </form>
 
-    <form class="income">
-        <!--(all string) SSN, product, profit-->
-        <br\>
-            <h3>ข้อมูลรายได้</h3>
- 
+        <form class="income">
+            <!--(all string) SSN, product, profit-->
+            <br\>
+                <h3>ข้อมูลรายได้</h3>
+
                 กิจกรรมการผลิต:<br />
                 <input type="text" id="product" />
 
                 <br />
-                จำนวนรายได้  :<br />
+                จำนวนรายได้ :<br />
                 <input type="text" id="profit" />
 
                 <button id="add4" type='button'>ADD</button>
 
-    </form>
+        </form>
 
-    <form class="sell_location">
-        <!--(all string) SSN, product, location-->
-        <br\>
-            <h3>แหล่งจำหน่าย</h3>
-         
+        <form class="sell_location">
+            <!--(all string) SSN, product, location-->
+            <br\>
+                <h3>แหล่งจำหน่าย</h3>
+
                 กิจกรรมสร้างราย:<br />
                 <input type="text" id="product" />
 
@@ -204,14 +206,22 @@
 
                 <button id="add5" type='button'>ADD</button><br />
 
-    </form>
-
+        </form>
+    </div>
 
 </body>
 
 <script>
-    //script for show input
+    //fixed value
+    var fixName = document.getElementById("firstname");
+    var fixSSN = document.getElementById("SSN");
+    fixName.readOnly = true;
+    fixSSN.readOnly = true;
 
+    fixName.value = "Mr Potter";
+    fixSSN.value = "1234567897897";
+
+    //script for show input
     var butt = document.getElementById("submit_button");
     butt.addEventListener("click", showData);
 

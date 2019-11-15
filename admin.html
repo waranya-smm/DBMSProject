@@ -7,17 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administrator</title>
     <script src="lib/jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css?family=K2D&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-    <h1 id="welcome">Welcome..</h1></nav>
+
+    <div id="bodyWelcome">
+        <h1 id="welcome">Welcome..</h1>
+    </div>
     <section id="contain">
         <div id="admin">
             <form id="adminSubmit" onsubmit="return handle_form_submission()">
-                    Admin: <input id="adminName" type="text" placeholder="ใส่ชื่อผู้ดูแล" required>
+                Admin: <input id="adminName" type="text" placeholder="ใส่ชื่อผู้ดูแล" required>
                 <button type='submit'>submit</button>
             </form>
         </div>
@@ -25,24 +29,46 @@
 
         <div id="option">
             <div id="addDiv">
-            <p>เพิ่มข้อมูลเกษตรกร: <button id="addInf" type='submit'><a href="form.html">ADD</a></button><br>
+                <p>เพิ่มข้อมูลเกษตรกร: <button id="addInf" type='submit'><a href="form.html">ADD</a></button><br>
             </div>
             </p>
-            
+
             <p>ค้นหาข้อมูล:
-            <select id="selectInf">
-                <option value="farmerInf">เกษตรกร</option>
-                <option value="filter">อื่นๆ</option>
-            </select></p>
+                <select id="selectInf">
+                    <option value="farmerInf">เกษตรกร</option>
+                    <option value="filter">อื่นๆ</option>
+                </select></p>
             <button onclick="handle_search_submission()" id="srchInf" type='submit'>SUBMIT</button>
             <div id="idFarmer_search">
 
                 <p>หมายเลขประจำตัวประชาชน: <input id="farmer_SSN" type="text" placeholder="1340002225556" required><br>
-                </p><p>ชื่อ-นามสกุล <input id="farmer_Name" placeholder="Name Lastname" type="text"
-                    required><br></p>
-                <p style="font-size: 14px;">สามารถเลือกกรอกข้อมูลใดข้อมูลหนึ่ง*</p>
+                </p>
+                <!-- <p>ชื่อ-นามสกุล <input id="farmer_Name" placeholder="Name Lastname" type="text" required><br></p>
+                <p style="font-size: 14px;">สามารถเลือกกรอกข้อมูลใดข้อมูลหนึ่ง*</p> -->
                 <button id="srchSSN">SEARCH</button>
-                <p id="alertERR">..</p>
+                <div id="bodyTable">
+                    <p id="alertERR" style="color: red;"></p>
+                    <label id="farmerInf"></label>
+                    <div id="shTable"></div>
+                    <!-- <div id="addressTable"></div> -->
+                    <label id="landInf"></label>
+                    <div id="landInfTable"></div>
+
+                    <label id="areaInf"></label>
+                    <div id="areaTable"></div>
+
+                    <label id="areaProd"></label>
+                    <div id="prodTable"></div>
+
+                    <label id="areaChm"></label>
+                    <div id="areaChem"></div>
+
+                    <label id="incomeInf"></label>
+                    <div id="incomeTable"></div>
+
+                    <label id="sellLocat"></label>
+                    <div id="sellTable"></div>
+                </div>
 
             </div>
         </div>
@@ -89,28 +115,116 @@
         }
 
         document.getElementById("srchSSN").addEventListener("click", function () {
+
             console.log("SSN")
             var farmer_SSN = document.getElementById("farmer_SSN").value;
-            var farmer_Name = document.getElementById("farmer_Name").value;
             var alertERR = document.getElementById("alertERR");
-            console.log(farmer_Name)
-            console.log(farmer_SSN)
-            console.log(farmer_SSN.length)
+            var farmerInf = document.getElementById("farmerInf");
+            var landInf = document.getElementById("landInf");
+            var areaInf = document.getElementById("areaInf");
+            var areaProd = document.getElementById("areaProd");
+            var areaChm = document.getElementById("areaChm");
+            var incomeInf = document.getElementById("incomeInf")
+            var sellLocat = document.getElementById("sellLocat")
 
-            if (farmer_SSN == "" && farmer_Name == "") {
-                alertERR.textContent = "Enter some of value"
+
+            shTables = "<br/><table><tr/><th>รหัสประจำตัวประชาชน</th><th>ชื่อ - สกุล</th><th>อายุ</th><th>หมายเลขโทรศัพท์</th><th>เลขที่ทะเบียนเกษตรกร</th><th>ที่อยู่</th><th>จำนวนแรงงาน</th>"
+            landInfTable = "<br><table><tr><th>พื้นที่ทำการเกษตรทั้งหมด</th><th>พื้นที่รวมทั้งหมด</th><th>จำนวนแปลงที่ทำเกษตรกรรมยั่งยืน</th>" +
+                "<th>พื้นที่รวมแปลงเกษตรยั่งยืน</th><th>ปีที่เริ่มทำ</th>"
+            areaTable = "<br><table><tr><th>แปลงที่</th><th>เอกสารสิทธิ์</th><th>พิกัดที่ดิน</th><th>จำนวนพื้นที่</th><th>รูปแบบ</th><th>มาตรฐาน</th>"
+            prodTable = "<br><table><tr><th>แปลงที่</th><th>กิจกรรมการผลิต</th><th>Piority</th>"
+            areaChem = "<br><table><tr><th>แปลงที่</th><th>สารเคมีที่ใช้</th>"
+            incomeTable = "<br><table><tr><th>กิจกรรมการผลิต</th><th>จำนวนรายได้</th>"
+            sellTable = "<br><table><tr><th>กิจกรรมสร้างราย</th><th>แหล่งจำหน่าย</th>"
+
+            if (farmer_SSN == "") {
+                alertERR.textContent = "กรุณากรอกข้อมูล"
             }
 
-            if (farmer_Name == "" && farmer_SSN.length !== 13) {
+            if (farmer_SSN.length !== 13) {
 
-                alertERR.textContent = "please enter 13 digit"
-            } else if (farmer_Name == "" && farmer_SSN.length === 13) {
+                alertERR.textContent = "กรุณากรอกรหัสประจำตัวประชาชน 13 หลัก"
+            } else if (farmer_SSN.length === 13) { //check value SSN from json 
+                //query and init data and + between td
+
+
                 //to get value of farmer
                 alertERR.textContent = "Get table from SSN"
+                var ssn = "1111111111";
+                var namee = "Waranya Samarnyart";
+                var age = "18";
+                var phone = "0940940940";
+                var address = "ขอชื่อที่อยู่ที่มันยาวๆหน่อยได้เป่า 36000000";
+                var Agri_num = "123456"
+                var Agri_member = "2"
+                farmerInf.textContent = "ข้อมูลส่วนตัว"
+                shTables = shTables + "<tr><td>" + ssn + "</td><td>" + namee + "</td>"
+                    + "<td>" + age + "</td><td>" + phone + "</td><td>" + Agri_num + "</td><td>" + address + "</td><td>" + Agri_member + "</td></tr>"
+                shTables += "<table>"
+
+                landInf.textContent = "ข้อมูลพื้นที่"
+                var All_amount_land = ""
+                var All_amount_area = ""
+                var Substainable_land = ""
+                var Substainable_area = ""
+                var Start_date = ""
+                landInfTable = landInfTable + "<tr><td>" + All_amount_land + "</td><td>" + All_amount_area + "</td><td>" +
+                    Substainable_land + "</td><td>" + Substainable_area + "</td><td>" + Start_date + "</td></tr>"
+                landInfTable += "<table>"
+
+                areaInf.textContent = "จำนวนพื้นที่ รูปแบบการทำเกษตรยั่งยืน"
+                var Land_no = ""
+                var Area_No = ""
+                var lat = ""
+                var lng = ""
+                var located = "(" + lat + "," + lng + ")"
+                var Area_size = ""
+                var Agri_type = ""
+                var Agri_standard = ""
+
+                areaTable = areaTable + "<tr><td>" + Land_no + "</td><td>" + Area_No + "</td><td>" +
+                    located + "</td><td>" + Area_size + "</td><td>" + Agri_type + "</td><td>" + Agri_standard + "</td></tr>"
+                areaTable += "<table>"
+
+                areaProd.textContent = "กิจกรรมการผลิต"
+                var Land_no = "";
+                var product = "";
+                var priority = "";
+                prodTable = prodTable + "<tr><td>" + Land_no + "</td><td>" + product + "</td><td>" +
+                        priority + "</td></tr>"
+                prodTable += "<table>"
+
+                areaChm.textContent = "การใช้สารเคมี"
+                var Land_no = "";
+                var chemUse = "";
+                areaChem = areaChem  + "<tr><td>" + Land_no + "</td><td>" + chemUse + "</td></tr>"
+                areaChem += "<table>"
+
+                incomeInf.textContent = "ข้อมูลรายได้"
+                var product = "";
+                var profit = "";
+                incomeTable = incomeTable + "<tr><td>" + product + "</td><td>" + profit + "</td></tr>"
+                incomeTable += "<table>"
+
+                sellLocat.textContent = "แหล่งจำหน่าย"
+                var product = "";
+                var location = "";
+                sellTable = sellTable + "<tr><td>" + product + "</td><td>" + location + "</td></tr>"
+                sellTable += "<table>"
+
+
+                $('#shTable').append(shTables);
+                $('#landInfTable').append(landInfTable);
+                $('#areaTable').append(areaTable);
+                $('#prodTable').append(prodTable);
+                $('#areaChem').append(areaChem);
+                $('#incomeTable').append(incomeTable);
+                $('#sellTable').append(sellTable);
+
+
+
             }
-            else if (farmer_SSN == "" && farmer_SSN == "") {
-                alertERR.textContent = "Get table from Name"
-            }
+
 
 
         });

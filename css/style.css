@@ -1,39 +1,43 @@
 html {
   background-color: #f6f6f6;
-  font-family: 'K2D', sans-serif;
+  font-family: "K2D", sans-serif;
+  /* max-width: 1420px; */
 }
 
-nav {
+#bodyWelcome {
   position: relative;
   height: 100px;
-  background-color: #85FFBD;
-background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 100px;
 }
 
 #welcome {
   position: absolute;
   margin: 0 auto;
   text-align: center;
-  padding: 1em;
+  padding: .6em;
   background-color: white;
   border-radius: 8px;
   top: 50px;
-  width: 100%;
+  width: 96.5%;
 }
 
 #addDiv {
-    border: 2px solid #f6f6f6;
-    border-radius: 6px;
+  border: 2px solid #f6f6f6;
+  border-radius: 6px;
 }
 
-#adminSubmit ,#option{
-   text-align: center;
-   margin: 0 auto;
-    padding: 2em;
-    background-color: white;
-    border-radius: 8px;
-    width: 90%;
+#adminSubmit,
+#option {
+  text-align: center;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
 }
 #contain {
   position: absolute;
@@ -42,41 +46,92 @@ background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
 }
 
 #input {
-    padding: 5em;
+  padding: 5em;
 }
 
 select {
-    width: 10%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 6px;
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
-#contain input[type=text] {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 6px;
-  }
+#contain input[type="text"] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
 
 a {
-     text-decoration: none;
-     color: white;
-     background-color: #a52a2a;
- } 
+  text-decoration: none;
+  color: white;
+  background-color: #a52a2a;
+}
 
 button {
-    /* font-weight: 700; */
-    font-size: 14px;
-    padding: 6px 16px;
-    border-radius: 5px;
-    color: white;
-    background-color: #a52a2a;
-    border: none;
+  /* font-weight: 700; */
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 5px;
+  color: white;
+  background-color: #a52a2a;
+  border: none;
 }
 
 p {
-    padding: .5em;
+  padding: 0.2em;
 }
+
+#bodyTable {
+  margin: 0 auto;
+  width: 90%;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+}
+
+table {
+  margin: 0 auto;
+
+  border-collapse: collapse;
+  font-size: 16px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 6px 16px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #a52a2a;
+  color: white;
+}
+
+label {
+  text-align: left;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 2px 14px;
+  /* width: 30%; */
+  border-radius: 5px;
+}
+
+#farmer, #landInfo, #area {
+  margin: 0 auto;
+  width: 80%;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+
+
